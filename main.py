@@ -1,11 +1,12 @@
-import math
 import json
 import os
 
 # ================= CẤU HÌNH =================
-FILE_DIEM = "aer2026_dulieudiem.txt"
+# Đường dẫn tới file điểm ĐÃ ĐƯỢC TÍNH SẴN ở máy của bạn
+FILE_DIEM_GOC = r"C:\Users\ASUS\Downloads\AER 2026\aer2026_dulieudiem.txt"
+
+# Nơi xuất dữ liệu cho Web
 FILE_JS = "data.js"
-FILE_INPUT_DEFAULT = "aer2026_tisodoidau.txt"
 
 REGIONS = {
     'RPL': ['FS', 'BAC', 'BRU', 'SLX', 'eA', 'TEN', 'HD', 'KOG', 'GJC'],
@@ -18,73 +19,62 @@ def get_region(team_name):
         if team_name in teams: return reg
     return 'OTHER'
 
-def tinhtoan():
-    # Tự động chọn file nếu chạy trên GitHub
-    if os.environ.get('GITHUB_ACTIONS') == 'true':
-        FILE_TRAN_DAU = FILE_INPUT_DEFAULT
-    else:
-        try:
-            import tkinter as tk
-            from tkinter import filedialog
-            root = tk.Tk()
-            root.withdraw()
-            root.attributes('-topmost', True)
-            FILE_TRAN_DAU = filedialog.askopenfilename(title="Chọn file tỉ số", filetypes=[("Text", "*.txt")])
-            if not FILE_TRAN_DAU: return False
-        except:
-            FILE_TRAN_DAU = FILE_INPUT_DEFAULT
+def export_to_web():
+    if not os.path.exists(FILE_DIEM_GOC):
+        print(f"LỖI: Không tìm thấy file tại {FILE_DIEM_GOC}")
+        print("Hãy chắc chắn bạn đã chạy tool tính điểm bên kia trước!")
+        return
 
-    TIER_CONF = {'0': 1.5, '1': 1.0, '2': 0.5} 
-    STAGE_CONF = {'ck': 1.4, 'playoff': 1.0, 'bang': 0.7} 
-    team_scores = {}; team_stats = {}
-    
-    for reg in REGIONS:
-        for team in REGIONS[reg]:
-            team_scores[team] = 1200.0
-            team_stats[team] = {'game_w': 0, 'game_l': 0, 'match_w': 0, 'match_l': 0}
-
-    if not os.path.exists(FILE_TRAN_DAU): return False
-
-    with open(FILE_TRAN_DAU, "r", encoding="utf-8") as f:
+    data = []
+    with open(FILE_DIEM_GOC, "r", encoding="utf-8") as f:
         for line in f:
             parts = line.strip().split()
-            if len(parts) < 4: continue
-            doi1, doi2, ts1, ts2 = parts[0], parts[1], int(parts[2]), int(parts[3])
-            tier_val = TIER_CONF.get(parts[4] if len(parts)>4 else '1', 1.0)
-            stage_val = STAGE_CONF.get(parts[5] if len(parts)>5 else 'bang', 1.0)
+            # Bỏ qua các dòng bị lỗi hoặc dòng nếu có
+            if len(parts) < 6 or "source" in line: continue
             
-            team_stats[doi1]['game_w'] += ts1; team_stats[doi1]['game_l'] += ts2
-            team_stats[doi2]['game_w'] += ts2; team_stats[doi2]['game_l'] += ts1
-            
-            match_change = (20 * tier_val * stage_val)
-            if ts1 > ts2:
-                team_scores[doi1] += match_change; team_scores[doi2] -= match_change
-                team_stats[doi1]['match_w'] += 1; team_stats[doi2]['match_l'] += 1
-            else:
-                team_scores[doi2] += match_change; team_scores[doi1] -= match_change
-                team_stats[doi2]['match_w'] += 1; team_stats[doi1]['match_l'] += 1
+            try:
+                team = parts[0]
+                score = float(parts[1])
+                gw, gl = int(parts[2]), int(parts[3])
+                mw, ml = int(parts[4]), int(parts[5])
+                
+                matches = mw + ml
+                wr = (mw / matches * 100) if matches > 0 else 0
+                
+                data.append({
+                    "team": team,
+                    "region": get_region(team),
+                    "score": round(score),
+                    "matches": matches,
+                    "gw_gl": f"{gw}/{gl}",
+                    "win_rate": f"{wr:.1f}%"
+                })
+            except Exception as e:
+                pass # Bỏ qua dòng lỗi
 
-    with open(FILE_DIEM, "w") as f:
-        for team, score in team_scores.items():
-            f.write(f"{team} {score:.4f} {team_stats[team]['game_w']} {team_stats[team]['game_l']} {team_stats[team]['match_w']} {team_stats[team]['match_l']}\n")
-    return True
-
-def export_to_web():
-    data = []
-    with open(FILE_DIEM, "r") as f:
-        for line in f:
-            p = line.split()
-            mw, ml = int(p[4]), int(p[5])
-            wr = (mw/(mw+ml)*100) if (mw+ml)>0 else 0
-            data.append({"rank":0, "team":p[0], "region":get_region(p[0]), "score":round(float(p[1])), "matches":mw+ml, "gw_gl":f"{p[2]}/{p[3]}", "win_rate":f"{wr:.1f}%"})
-    
+    # Sắp xếp theo điểm từ cao xuống thấp
     data.sort(key=lambda x: x["score"], reverse=True)
+
+    # Thuật toán chia Tier y hệt như bản gốc của bạn
+    total_teams = len(data)
+    idx_s = int(total_teams * 0.10)
+    idx_a = int(total_teams * 0.30)
+    idx_b = int(total_teams * 0.50)
+    idx_c = int(total_teams * 0.75)
+
     for i, item in enumerate(data):
         item["rank"] = i + 1
-        item["tier"] = "S" if i < 3 else "A" if i < 8 else "D"
+        if i < idx_s: item["tier"] = "S"
+        elif i < idx_a: item["tier"] = "A"
+        elif i < idx_b: item["tier"] = "B"
+        elif i < idx_c: item["tier"] = "C"
+        else: item["tier"] = "D"
 
+    # Ghi ra file JS
     with open(FILE_JS, "w", encoding="utf-8") as f:
         f.write(f"const AER_DATA = {json.dumps(data, ensure_ascii=False, indent=4)};")
+    
+    print("-> Đã lấy thành công dữ liệu điểm và xuất ra data.js cho Web!")
 
 if __name__ == "__main__":
-    if tinhtoan(): export_to_web()
+    export_to_web()
