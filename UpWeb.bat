@@ -4,10 +4,10 @@ echo ===================================================
 echo   DANG DONG BO VA DAY DU LIEU LEN GITHUB...
 echo ===================================================
 
-:: Copy file tu cho khac ve day (Nho giu nguyen duong dan file cua ban nhe)
-copy /Y "DÁN_ĐƯỜNG_DẪN_FILE_TXT_CỦA_BẠN_VÀO_ĐÂY" .
+:: Copy file tu thu muc Downloads ve day
+copy /Y "C:\Users\ASUS\Downloads\AER 2026\aer2026_tisodoidau.txt" .
 
-:: Đóng gói file
+:: Dong goi file
 git add .
 git commit -m "Cap nhat ket qua tu may tinh"
 
@@ -19,7 +19,7 @@ git push origin main
 
 echo.
 echo ===================================================
-echo   THANH CONG TRET DE! 
+echo   THANH CONG TOAN DIEN! 
 echo   Robot Github dang nhan nguyen lieu de "nau". 
 echo   F5 Web sau 1-2 phut nua nhe!
 echo ===================================================
