@@ -5,7 +5,6 @@ import os
 # ================= CẤU HÌNH =================
 FILE_DIEM = "aer2026_dulieudiem.txt"
 FILE_JS = "data.js"
-# Mặc định file dữ liệu đầu vào
 FILE_INPUT_DEFAULT = "aer2026_tisodoidau.txt"
 
 REGIONS = {
@@ -20,20 +19,21 @@ def get_region(team_name):
     return 'OTHER'
 
 def tinhtoan():
-    # Tự động chọn file nếu chạy trên GitHub (không có giao diện)
+    # Tự động chọn file nếu chạy trên GitHub
     if os.environ.get('GITHUB_ACTIONS') == 'true':
         FILE_TRAN_DAU = FILE_INPUT_DEFAULT
     else:
-        # Nếu chạy ở máy cá nhân thì hiện bảng chọn file cho tiện
-        import tkinter as tk
-        from tkinter import filedialog
-        root = tk.Tk()
-        root.withdraw()
-        root.attributes('-topmost', True)
-        FILE_TRAN_DAU = filedialog.askopenfilename(title="Chọn file tỉ số", filetypes=[("Text", "*.txt")])
-        if not FILE_TRAN_DAU: return False
+        try:
+            import tkinter as tk
+            from tkinter import filedialog
+            root = tk.Tk()
+            root.withdraw()
+            root.attributes('-topmost', True)
+            FILE_TRAN_DAU = filedialog.askopenfilename(title="Chọn file tỉ số", filetypes=[("Text", "*.txt")])
+            if not FILE_TRAN_DAU: return False
+        except:
+            FILE_TRAN_DAU = FILE_INPUT_DEFAULT
 
-    # --- THUẬT TOÁN ELO GIỮ NGUYÊN ---
     TIER_CONF = {'0': 1.5, '1': 1.0, '2': 0.5} 
     STAGE_CONF = {'ck': 1.4, 'playoff': 1.0, 'bang': 0.7} 
     team_scores = {}; team_stats = {}
@@ -56,9 +56,7 @@ def tinhtoan():
             team_stats[doi1]['game_w'] += ts1; team_stats[doi1]['game_l'] += ts2
             team_stats[doi2]['game_w'] += ts2; team_stats[doi2]['game_l'] += ts1
             
-            # Tính toán Match Change... (Phần này giữ nguyên như code cũ của bạn)
-            sc1, sc2 = team_scores.get(doi1, 1200), team_scores.get(doi2, 1200)
-            match_change = (20 * tier_val * stage_val) # Đơn giản hóa để ví dụ
+            match_change = (20 * tier_val * stage_val)
             if ts1 > ts2:
                 team_scores[doi1] += match_change; team_scores[doi2] -= match_change
                 team_stats[doi1]['match_w'] += 1; team_stats[doi2]['match_l'] += 1
