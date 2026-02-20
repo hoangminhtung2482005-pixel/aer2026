@@ -29,3 +29,4 @@ TEN GJC 3 0 1 bang
 BRU HD 3 0 1 bang
 GJC SLX 3 2 1 bang
 SGP GAM 3 0 1 bang
+SGP GAM 3 0 1 bang
