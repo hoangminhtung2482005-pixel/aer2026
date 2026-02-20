@@ -217,8 +217,9 @@
                         <td class="py-4 pl-6 pr-4 text-center">${rankDisplay}</td>
                         <td class="p-4">
                             <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 bg-white/90 rounded border border-slate-300 flex items-center justify-center flex-shrink-0">
-                                    <span class="text-slate-800 text-xs font-black uppercase">${team.team.substring(0,2)}</span>
+                                <div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+                                    <img src="img/${team.team}.png" alt="${team.team}" class="max-w-full max-h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300" 
+                                         onerror="this.onerror=null; this.outerHTML='<div class=\\'w-9 h-9 bg-[#1e293b] rounded border border-slate-700 flex items-center justify-center\\'><span class=\\'text-slate-400 text-xs font-black uppercase\\'>${team.team.substring(0,2)}</span></div>';">
                                 </div>
                                 <span class="font-bold text-white text-base group-hover:text-blue-400 transition-colors">${team.team}</span>
                             </div>
