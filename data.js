@@ -43,10 +43,10 @@ const AER_DATA = [
         "rank": 5,
         "team": "SGP",
         "region": "AOG",
-        "score": 1228,
-        "matches": 2,
-        "gw_gl": "6/0",
-        "win_rate": "100.0%",
+        "score": 1200,
+        "matches": 0,
+        "gw_gl": "0/0",
+        "win_rate": "0.0%",
         "tier": "A"
     },
     {
@@ -111,6 +111,16 @@ const AER_DATA = [
     },
     {
         "rank": 12,
+        "team": "GAM",
+        "region": "AOG",
+        "score": 1200,
+        "matches": 0,
+        "gw_gl": "0/0",
+        "win_rate": "0.0%",
+        "tier": "D"
+    },
+    {
+        "rank": 13,
         "team": "FW",
         "region": "GCS",
         "score": 1200,
@@ -120,7 +130,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 13,
+        "rank": 14,
         "team": "HKA",
         "region": "GCS",
         "score": 1200,
@@ -130,7 +140,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 14,
+        "rank": 15,
         "team": "ONE",
         "region": "GCS",
         "score": 1200,
@@ -140,7 +150,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 15,
+        "rank": 16,
         "team": "DCG",
         "region": "GCS",
         "score": 1200,
@@ -150,7 +160,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 16,
+        "rank": 17,
         "team": "BMG",
         "region": "GCS",
         "score": 1200,
@@ -160,7 +170,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 17,
+        "rank": 18,
         "team": "ANK",
         "region": "GCS",
         "score": 1200,
@@ -170,7 +180,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 18,
+        "rank": 19,
         "team": "LIT",
         "region": "GCS",
         "score": 1200,
@@ -180,7 +190,7 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 19,
+        "rank": 20,
         "team": "eA",
         "region": "RPL",
         "score": 1172,
@@ -190,23 +200,13 @@ const AER_DATA = [
         "tier": "D"
     },
     {
-        "rank": 20,
+        "rank": 21,
         "team": "GJC",
         "region": "RPL",
         "score": 1172,
         "matches": 8,
         "gw_gl": "11/19",
         "win_rate": "37.5%",
-        "tier": "D"
-    },
-    {
-        "rank": 21,
-        "team": "GAM",
-        "region": "AOG",
-        "score": 1172,
-        "matches": 2,
-        "gw_gl": "0/6",
-        "win_rate": "0.0%",
         "tier": "D"
     },
     {
