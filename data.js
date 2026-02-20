@@ -23,10 +23,10 @@ const AER_DATA = [
         "rank": 3,
         "team": "SLX",
         "region": "RPL",
-        "score": 1270,
-        "matches": 7,
-        "gw_gl": "20/8",
-        "win_rate": "85.7%",
+        "score": 1256,
+        "matches": 8,
+        "gw_gl": "20/11",
+        "win_rate": "75.0%",
         "tier": "S"
     },
     {
@@ -43,10 +43,10 @@ const AER_DATA = [
         "rank": 5,
         "team": "SGP",
         "region": "AOG",
-        "score": 1200,
-        "matches": 0,
-        "gw_gl": "0/0",
-        "win_rate": "0.0%",
+        "score": 1214,
+        "matches": 1,
+        "gw_gl": "3/0",
+        "win_rate": "100.0%",
         "tier": "A"
     },
     {
