@@ -280,9 +280,11 @@
             renderDashboard();
         });
 
-        // Cập nhật giờ
+       // Cập nhật ngày và giờ
         const now = new Date();
-        document.getElementById('last-updated').innerText = "Last updated: " + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const dateString = now.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('last-updated').innerText = "Cập nhật cuối: " + dateString + " | " + timeString;
 
         // Khởi chạy khi load trang
         window.onload = renderDashboard;
