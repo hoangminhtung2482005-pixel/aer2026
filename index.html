@@ -64,9 +64,12 @@
                 <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-300 opacity-80"></div>
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2">RPL <span class="w-2 h-2 rounded-full bg-blue-500"></span></h3>
-                            <p class="text-xs text-slate-500">RoV Pro League</p>
+                        <div class="flex items-center gap-3">
+                            <img src="img/RPL_logo.png" class="w-10 h-10 object-contain drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]" onerror="this.style.display='none'">
+                            <div>
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">RPL <span class="w-2 h-2 rounded-full bg-blue-500"></span></h3>
+                                <p class="text-xs text-slate-500">RoV Pro League</p>
+                            </div>
                         </div>
                         <span class="text-[10px] font-semibold text-blue-400 bg-blue-900/30 px-2 py-1 rounded border border-blue-800/50">Active</span>
                     </div>
@@ -82,12 +85,15 @@
                     </div>
                 </div>
 
-                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 relative overflow-hidden">
+                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-400 opacity-80"></div>
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2">AOG <span class="w-2 h-2 rounded-full bg-red-500"></span></h3>
-                            <p class="text-xs text-slate-500">Arena of Glory</p>
+                        <div class="flex items-center gap-3">
+                            <img src="img/AOG_logo.png" class="w-10 h-10 object-contain drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]" onerror="this.style.display='none'">
+                            <div>
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">AOG <span class="w-2 h-2 rounded-full bg-red-500"></span></h3>
+                                <p class="text-xs text-slate-500">Arena of Glory</p>
+                            </div>
                         </div>
                         <span class="text-[10px] font-semibold text-red-400 bg-red-900/30 px-2 py-1 rounded border border-red-800/50">Active</span>
                     </div>
@@ -103,12 +109,15 @@
                     </div>
                 </div>
 
-                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 relative overflow-hidden">
+                <div class="bg-[#111827] rounded-xl p-5 border border-slate-800 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 to-yellow-300 opacity-80"></div>
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2">GCS <span class="w-2 h-2 rounded-full bg-yellow-500"></span></h3>
-                            <p class="text-xs text-slate-500">Garena Challenger</p>
+                        <div class="flex items-center gap-3">
+                            <img src="img/GCS_logo.png" class="w-10 h-10 object-contain drop-shadow-[0_0_5px_rgba(234,179,8,0.5)]" onerror="this.style.display='none'">
+                            <div>
+                                <h3 class="text-xl font-bold text-white flex items-center gap-2">GCS <span class="w-2 h-2 rounded-full bg-yellow-500"></span></h3>
+                                <p class="text-xs text-slate-500">Garena Challenger</p>
+                            </div>
                         </div>
                         <span class="text-[10px] font-semibold text-yellow-400 bg-yellow-900/30 px-2 py-1 rounded border border-yellow-800/50">Active</span>
                     </div>
@@ -202,6 +211,12 @@
                 if (team.rank === 2) rankDisplay = `<div class="w-8 h-8 rounded-full rank-2 flex items-center justify-center font-bold text-sm mx-auto">${team.rank}</div>`;
                 if (team.rank === 3) rankDisplay = `<div class="w-8 h-8 rounded-full rank-3 flex items-center justify-center font-bold text-sm mx-auto">${team.rank}</div>`;
 
+                // Xử lý màu sắc khu vực
+                let regionColorClass = 'text-slate-400';
+                if (team.region === 'RPL') regionColorClass = 'text-blue-400';
+                else if (team.region === 'AOG') regionColorClass = 'text-red-400';
+                else if (team.region === 'GCS') regionColorClass = 'text-yellow-400';
+
                 // Xử lý màu sắc Game W/L
                 const wlParts = team.gw_gl.split('/');
                 const gw = wlParts[0] || '0';
@@ -224,7 +239,7 @@
                                 <span class="font-bold text-white text-base group-hover:text-blue-400 transition-colors">${team.team}</span>
                             </div>
                         </td>
-                        <td class="p-4 text-slate-400 font-medium">${team.region}</td>
+                        <td class="p-4 font-medium ${regionColorClass}">${team.region}</td>
                         <td class="p-4 text-center">
                             <span class="px-2.5 py-1 rounded-md text-xs font-bold tracking-wide badge-${team.tier}">
                                 Tier ${team.tier}
@@ -265,7 +280,7 @@
             renderDashboard();
         });
 
-        // Cập nhật giờ (cho ngầu)
+        // Cập nhật giờ
         const now = new Date();
         document.getElementById('last-updated').innerText = "Last updated: " + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
