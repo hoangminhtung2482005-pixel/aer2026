@@ -2,10 +2,10 @@ const AER_DATA = [
     {
         "team": "BRU",
         "region": "RPL",
-        "score": 1333,
-        "matches": 8,
-        "gw_gl": "23/8",
-        "win_rate": "87.5%",
+        "score": 1358,
+        "matches": 9,
+        "gw_gl": "26/8",
+        "win_rate": "88.9%",
         "rank": 1,
         "tier": "S"
     },
@@ -22,10 +22,10 @@ const AER_DATA = [
     {
         "team": "SLX",
         "region": "RPL",
-        "score": 1278,
-        "matches": 8,
-        "gw_gl": "21/11",
-        "win_rate": "75.0%",
+        "score": 1254,
+        "matches": 9,
+        "gw_gl": "21/14",
+        "win_rate": "66.7%",
         "rank": 3,
         "tier": "A"
     },
@@ -40,27 +40,27 @@ const AER_DATA = [
         "tier": "A"
     },
     {
-        "team": "SGP",
-        "region": "AOG",
-        "score": 1200,
-        "matches": 0,
-        "gw_gl": "0/0",
-        "win_rate": "0.0%",
+        "team": "ONE",
+        "region": "GCS",
+        "score": 1224,
+        "matches": 1,
+        "gw_gl": "3/1",
+        "win_rate": "100.0%",
         "rank": 5,
         "tier": "A"
     },
     {
-        "team": "FPT",
-        "region": "AOG",
-        "score": 1200,
-        "matches": 0,
-        "gw_gl": "0/0",
-        "win_rate": "0.0%",
+        "team": "LIT",
+        "region": "GCS",
+        "score": 1222,
+        "matches": 1,
+        "gw_gl": "3/2",
+        "win_rate": "100.0%",
         "rank": 6,
         "tier": "A"
     },
     {
-        "team": "1S",
+        "team": "SGP",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -70,7 +70,7 @@ const AER_DATA = [
         "tier": "A"
     },
     {
-        "team": "BOX",
+        "team": "FPT",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -80,7 +80,7 @@ const AER_DATA = [
         "tier": "B"
     },
     {
-        "team": "SPN",
+        "team": "1S",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -90,7 +90,7 @@ const AER_DATA = [
         "tier": "B"
     },
     {
-        "team": "FPL",
+        "team": "BOX",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -100,7 +100,7 @@ const AER_DATA = [
         "tier": "B"
     },
     {
-        "team": "TS",
+        "team": "SPN",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -110,7 +110,7 @@ const AER_DATA = [
         "tier": "B"
     },
     {
-        "team": "GAM",
+        "team": "FPL",
         "region": "AOG",
         "score": 1200,
         "matches": 0,
@@ -120,8 +120,8 @@ const AER_DATA = [
         "tier": "B"
     },
     {
-        "team": "FW",
-        "region": "GCS",
+        "team": "TS",
+        "region": "AOG",
         "score": 1200,
         "matches": 0,
         "gw_gl": "0/0",
@@ -130,8 +130,8 @@ const AER_DATA = [
         "tier": "C"
     },
     {
-        "team": "HKA",
-        "region": "GCS",
+        "team": "GAM",
+        "region": "AOG",
         "score": 1200,
         "matches": 0,
         "gw_gl": "0/0",
@@ -140,7 +140,7 @@ const AER_DATA = [
         "tier": "C"
     },
     {
-        "team": "ONE",
+        "team": "FW",
         "region": "GCS",
         "score": 1200,
         "matches": 0,
@@ -160,7 +160,7 @@ const AER_DATA = [
         "tier": "C"
     },
     {
-        "team": "BMG",
+        "team": "ANK",
         "region": "GCS",
         "score": 1200,
         "matches": 0,
@@ -170,21 +170,21 @@ const AER_DATA = [
         "tier": "C"
     },
     {
-        "team": "ANK",
+        "team": "HKA",
         "region": "GCS",
-        "score": 1200,
-        "matches": 0,
-        "gw_gl": "0/0",
+        "score": 1178,
+        "matches": 1,
+        "gw_gl": "2/3",
         "win_rate": "0.0%",
         "rank": 18,
         "tier": "C"
     },
     {
-        "team": "LIT",
+        "team": "BMG",
         "region": "GCS",
-        "score": 1200,
-        "matches": 0,
-        "gw_gl": "0/0",
+        "score": 1176,
+        "matches": 1,
+        "gw_gl": "1/3",
         "win_rate": "0.0%",
         "rank": 19,
         "tier": "D"
