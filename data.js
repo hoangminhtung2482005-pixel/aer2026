@@ -12,10 +12,10 @@ const AER_DATA = [
     {
         "team": "BRU",
         "region": "RPL",
-        "score": 1347,
-        "matches": 11,
-        "gw_gl": "30/12",
-        "win_rate": "81.8%",
+        "score": 1356,
+        "matches": 12,
+        "gw_gl": "33/13",
+        "win_rate": "83.3%",
         "rank": 2,
         "tier": "S"
     },
@@ -222,10 +222,10 @@ const AER_DATA = [
     {
         "team": "eA",
         "region": "RPL",
-        "score": 1073,
-        "matches": 10,
-        "gw_gl": "13/27",
-        "win_rate": "20.0%",
+        "score": 1065,
+        "matches": 11,
+        "gw_gl": "14/30",
+        "win_rate": "18.2%",
         "rank": 23,
         "tier": "D"
     },
