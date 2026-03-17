@@ -269,10 +269,9 @@
             renderDashboard();
         });
 
-        const now = new Date();
-        const dateString = now.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        document.getElementById('last-updated').innerText = "Cập nhật cuối: " + dateString + " | " + timeString;
+        if (typeof LAST_UPDATED !== 'undefined') {
+            document.getElementById('last-updated').innerText = "Cập nhật cuối: " + LAST_UPDATED;
+        }
 
         window.onload = renderDashboard;
     </script>
