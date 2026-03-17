@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 # ================= CẤU HÌNH =================
 # Đường dẫn tới file điểm ĐÃ ĐƯỢC TÍNH SẴN ở máy của bạn
@@ -55,7 +56,7 @@ def export_to_web():
     # Sắp xếp theo điểm từ cao xuống thấp
     data.sort(key=lambda x: x["score"], reverse=True)
 
-    # Thuật toán chia Tier y hệt như bản gốc của bạn
+    # Thuật toán chia Tier
     total_teams = len(data)
     idx_s = int(total_teams * 0.10)
     idx_a = int(total_teams * 0.30)
@@ -70,11 +71,15 @@ def export_to_web():
         elif i < idx_c: item["tier"] = "C"
         else: item["tier"] = "D"
 
+    # Lấy thời gian hiện tại lúc chạy tool
+    now_str = datetime.now().strftime("%d/%m/%Y | %I:%M %p")
+
     # Ghi ra file JS
     with open(FILE_JS, "w", encoding="utf-8") as f:
+        f.write(f"const LAST_UPDATED = '{now_str}';\n")
         f.write(f"const AER_DATA = {json.dumps(data, ensure_ascii=False, indent=4)};")
     
-    print("-> Đã lấy thành công dữ liệu điểm và xuất ra data.js cho Web!")
+    print(f"-> Đã xuất data.js! Thời gian cập nhật: {now_str}")
 
 if __name__ == "__main__":
     export_to_web()
