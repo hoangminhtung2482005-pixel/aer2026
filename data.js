@@ -1,9 +1,9 @@
-const LAST_UPDATED = '06/04/2026 | 04:41 AM';
+const LAST_UPDATED = '06/04/2026 | 04:54 AM';
 const AER_DATA = [
     {
         "team": "BRU",
         "region": "RPL",
-        "score": 1505,
+        "score": 1500,
         "matches": 19,
         "gw_gl": "54/23",
         "win_rate": "84.2%",
@@ -13,7 +13,7 @@ const AER_DATA = [
     {
         "team": "FS",
         "region": "RPL",
-        "score": 1414,
+        "score": 1415,
         "matches": 18,
         "gw_gl": "52/16",
         "win_rate": "88.9%",
@@ -61,22 +61,22 @@ const AER_DATA = [
         "tier": "A"
     },
     {
+        "team": "KOG",
+        "region": "RPL",
+        "score": 1241,
+        "matches": 18,
+        "gw_gl": "35/32",
+        "win_rate": "50.0%",
+        "rank": 7,
+        "tier": "A"
+    },
+    {
         "team": "BOX",
         "region": "AOG",
         "score": 1241,
         "matches": 9,
         "gw_gl": "19/14",
         "win_rate": "66.7%",
-        "rank": 7,
-        "tier": "A"
-    },
-    {
-        "team": "KOG",
-        "region": "RPL",
-        "score": 1238,
-        "matches": 18,
-        "gw_gl": "35/32",
-        "win_rate": "50.0%",
         "rank": 8,
         "tier": "B"
     },
